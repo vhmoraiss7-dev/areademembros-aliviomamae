@@ -44,629 +44,427 @@ const modules = [
   },
 ]
 
-function getModuleContent(moduleId: string): string {
-  const content: Record<string, string> = {
+const getModuleContent = (moduleId: string) => {
+  const content = {
     massagens: `
-      <div class="space-y-8">
-        <div class="bg-gradient-to-r from-rose-50 to-pink-50 p-6 rounded-xl border border-rose-200">
-          <h2 class="text-2xl font-bold text-gray-800 mb-4">🤱 Massagens na Gestação</h2>
-          <p class="text-gray-700 leading-relaxed">
-            Descubra técnicas seguras e eficazes de massagem para cada trimestre da gestação, 
-            promovendo relaxamento, alívio de dores e fortalecimento do vínculo com seu bebê.
-          </p>
-        </div>
-
-        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-          <h3 class="text-xl font-semibold text-gray-800 mb-4">✨ Benefícios Comprovados</h3>
-          <ul class="space-y-2 text-gray-700">
-            <li class="flex items-start"><span class="text-rose-500 mr-2">•</span> Redução de 70% nos níveis de cortisol (hormônio do estresse)</li>
-            <li class="flex items-start"><span class="text-rose-500 mr-2">•</span> Alívio significativo de dores lombares e ciática</li>
-            <li class="flex items-start"><span class="text-rose-500 mr-2">•</span> Melhora da qualidade do sono em até 80% dos casos</li>
-            <li class="flex items-start"><span class="text-rose-500 mr-2">•</span> Redução do inchaço nas pernas e pés</li>
-            <li class="flex items-start"><span class="text-rose-500 mr-2">•</span> Diminuição da ansiedade e fortalecimento do vínculo mãe-bebê</li>
-          </ul>
-        </div>
-
-        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-          <h3 class="text-xl font-semibold text-gray-800 mb-4">🛍️ Materiais Necessários</h3>
-          <ul class="space-y-2 text-gray-700">
-            <li class="flex items-start"><span class="text-rose-500 mr-2">•</span> Óleo de amêndoas doces ou coco (morno)</li>
-            <li class="flex items-start"><span class="text-rose-500 mr-2">•</span> Toalhas limpas e macias</li>
-            <li class="flex items-start"><span class="text-rose-500 mr-2">•</span> Almofadas para apoio e conforto</li>
-            <li class="flex items-start"><span class="text-rose-500 mr-2">•</span> Ambiente aquecido e música relaxante</li>
-          </ul>
-        </div>
-
-        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-          <h3 class="text-xl font-semibold text-gray-800 mb-4">📋 Passo a Passo - Massagem Completa (15-20 minutos)</h3>
-          
-          <div class="space-y-6">
-            <div>
-              <h4 class="font-semibold text-gray-800 mb-3">1. Preparação do Ambiente (2 minutos)</h4>
-              <ol class="list-decimal list-inside space-y-1 text-gray-700 ml-4">
-                <li>Aqueça o ambiente para 22-24°C</li>
-                <li>Coloque música relaxante em volume baixo</li>
-                <li>Aqueça as mãos esfregando-as</li>
-                <li>Aplique óleo nas palmas (nunca direto na pele)</li>
-              </ol>
-            </div>
-
-            <div>
-              <h4 class="font-semibold text-gray-800 mb-3">2. Massagem nos Pés (5 minutos)</h4>
-              <ol class="list-decimal list-inside space-y-1 text-gray-700 ml-4">
-                <li><strong>Posição:</strong> gestante sentada, pés no colo do parceiro</li>
-                <li>Movimentos circulares na sola, pressão leve a moderada</li>
-                <li>Deslize o polegar do calcanhar aos dedos (5-8 vezes cada pé)</li>
-                <li>Massageie cada dedo individualmente com movimento de pinça</li>
-                <li>Tornozelos: círculos lentos, 10 vezes cada direção</li>
-              </ol>
-            </div>
-
-            <div>
-              <h4 class="font-semibold text-gray-800 mb-3">3. Panturrilhas e Pernas (5 minutos)</h4>
-              <ol class="list-decimal list-inside space-y-1 text-gray-700 ml-4">
-                <li><strong>Posição:</strong> gestante deitada de lado ou sentada</li>
-                <li>Movimentos ascendentes do tornozelo ao joelho</li>
-                <li>Use as duas mãos com pressão firme mas confortável</li>
-                <li>Movimentos de "ordenha" na panturrilha</li>
-                <li>Termine com drenagem suave em direção ao coração</li>
-              </ol>
-            </div>
-
-            <div>
-              <h4 class="font-semibold text-gray-800 mb-3">4. Região Lombar (8 minutos)</h4>
-              <ol class="list-decimal list-inside space-y-1 text-gray-700 ml-4">
-                <li><strong>Posição:</strong> gestante sentada de costas para o parceiro</li>
-                <li>Palmas na lombar, movimentos circulares amplos</li>
-                <li>Pressão com polegares <strong>ao lado da coluna</strong> (nunca sobre ela)</li>
-                <li>Movimentos de vai-e-vem da cintura às costelas</li>
-                <li>Finalize com círculos suaves no sacro</li>
-              </ol>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-amber-50 p-6 rounded-xl border border-amber-200">
-          <h3 class="text-xl font-semibold text-amber-800 mb-4">⚠️ Contraindicações e Cuidados</h3>
-          <div class="space-y-4">
-            <div>
-              <h4 class="font-semibold text-amber-800 mb-2">NÃO fazer massagem em caso de:</h4>
-              <ul class="space-y-1 text-amber-700">
-                <li class="flex items-start"><span class="text-amber-500 mr-2">•</span> Gravidez de alto risco ou placenta prévia</li>
-                <li class="flex items-start"><span class="text-amber-500 mr-2">•</span> Sangramento vaginal ativo</li>
-                <li class="flex items-start"><span class="text-amber-500 mr-2">•</span> Febre ou pré-eclâmpsia severa</li>
-                <li class="flex items-start"><span class="text-amber-500 mr-2">•</span> Histórico de trabalho de parto prematuro</li>
-              </ul>
-            </div>
-            <div class="bg-amber-100 p-4 rounded-lg">
-              <p class="text-amber-800 font-medium">
-                <strong>PARE IMEDIATAMENTE</strong> se houver contrações, sangramento ou qualquer desconforto. 
-                Sempre consulte seu obstetra antes de iniciar qualquer técnica de massagem.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-          <h3 class="text-xl font-semibold text-gray-800 mb-4">💡 Dicas Rápidas para Sucesso</h3>
-          <ul class="space-y-2 text-gray-700">
-            <li class="flex items-start"><span class="text-rose-500 mr-2">•</span> <strong>Frequência ideal:</strong> 2-3 vezes por semana, 15-20 minutos</li>
-            <li class="flex items-start"><span class="text-rose-500 mr-2">•</span> <strong>Melhor horário:</strong> Final da tarde ou antes de dormir</li>
-            <li class="flex items-start"><span class="text-rose-500 mr-2">•</span> <strong>Temperatura do óleo:</strong> Morno, nunca quente</li>
-            <li class="flex items-start"><span class="text-rose-500 mr-2">•</span> <strong>Pressão:</strong> Sempre confortável, nunca dolorosa</li>
-            <li class="flex items-start"><span class="text-rose-500 mr-2">•</span> <strong>Comunicação:</strong> Pergunte sempre sobre o conforto</li>
-          </ul>
-        </div>
+      <h2>🤱 Massagens na Gestação</h2>
+      <p><strong>Técnicas seguras e eficazes para cada trimestre da gestação</strong></p>
+      
+      <h3>🎯 Objetivo</h3>
+      <p>Proporcionar alívio das tensões, melhorar a circulação e fortalecer a conexão mãe-bebê através de massagens seguras e terapêuticas.</p>
+      
+      <h3>✨ Benefícios</h3>
+      <ul>
+        <li>Reduz dores nas costas e pernas</li>
+        <li>Melhora a qualidade do sono</li>
+        <li>Diminui o inchaço e melhora a circulação</li>
+        <li>Reduz o estresse e ansiedade</li>
+        <li>Fortalece o vínculo com o bebê</li>
+      </ul>
+      
+      <h3>🛠️ Materiais Necessários</h3>
+      <ul>
+        <li>Óleo de amêndoas ou coco (morno)</li>
+        <li>Almofadas para apoio</li>
+        <li>Ambiente tranquilo e aquecido</li>
+        <li>Música relaxante (opcional)</li>
+      </ul>
+      
+      <h3>📋 Passo a Passo por Trimestre</h3>
+      
+      <h4>1º Trimestre (1-12 semanas)</h4>
+      <ol>
+        <li><strong>Massagem nos pés:</strong> Movimentos circulares suaves na sola dos pés</li>
+        <li><strong>Pescoço e ombros:</strong> Pressão leve com movimentos ascendentes</li>
+        <li><strong>Mãos e braços:</strong> Deslizamentos suaves do punho ao ombro</li>
+      </ol>
+      
+      <h4>2º Trimestre (13-27 semanas)</h4>
+      <ol>
+        <li><strong>Posição lateral:</strong> Deite de lado com almofadas de apoio</li>
+        <li><strong>Costas:</strong> Movimentos longos e suaves ao longo da coluna</li>
+        <li><strong>Quadris:</strong> Círculos suaves na região lombar</li>
+        <li><strong>Pernas:</strong> Deslizamentos de baixo para cima</li>
+      </ol>
+      
+      <h4>3º Trimestre (28-40 semanas)</h4>
+      <ol>
+        <li><strong>Posição sentada:</strong> Massagem nos ombros e pescoço</li>
+        <li><strong>Pés e tornozelos:</strong> Movimentos circulares para reduzir inchaço</li>
+        <li><strong>Barriga:</strong> Círculos muito suaves no sentido horário</li>
+      </ol>
+      
+      <div style="background: #fef2f2; padding: 1rem; border-radius: 8px; border-left: 4px solid #ef4444; margin: 1rem 0;">
+        <h4>⚠️ Precauções Importantes</h4>
+        <ul>
+          <li>Evite pressão forte no abdômen</li>
+          <li>Não massageie pontos de acupuntura nos tornozelos</li>
+          <li>Pare se sentir qualquer desconforto</li>
+          <li>Consulte seu médico antes de iniciar</li>
+        </ul>
       </div>
+      
+      <h3>💡 Dicas Rápidas</h3>
+      <ul>
+        <li>🕐 Melhor horário: final da tarde ou noite</li>
+        <li>🌡️ Temperatura do óleo: morna, nunca quente</li>
+        <li>⏱️ Duração ideal: 15-30 minutos</li>
+        <li>🎵 Use música relaxante para potencializar o efeito</li>
+      </ul>
     `,
     pega: `
-      <div class="space-y-8">
-        <div class="bg-gradient-to-r from-emerald-50 to-teal-50 p-6 rounded-xl border border-emerald-200">
-          <h2 class="text-2xl font-bold text-gray-800 mb-4">🤱 Método P.E.G.A. de Amamentação</h2>
-          <p class="text-gray-700 leading-relaxed">
-            O método P.E.G.A. é uma técnica revolucionária que garante uma amamentação sem dor e eficaz. 
-            Cada letra representa um passo fundamental para o sucesso da amamentação.
-          </p>
-        </div>
-
-        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-          <h3 class="text-xl font-semibold text-gray-800 mb-4">🎯 O que significa P.E.G.A.?</h3>
-          <div class="grid md:grid-cols-2 gap-6">
-            <div class="space-y-4">
-              <div class="bg-emerald-50 p-4 rounded-lg border border-emerald-200">
-                <h4 class="font-bold text-emerald-800 mb-2">P - Posicionamento</h4>
-                <p class="text-emerald-700 text-sm">Posição correta da mãe e do bebê</p>
-              </div>
-              <div class="bg-teal-50 p-4 rounded-lg border border-teal-200">
-                <h4 class="font-bold text-teal-800 mb-2">E - Encaixe</h4>
-                <p class="text-teal-700 text-sm">Encaixe perfeito da boca do bebê no seio</p>
-              </div>
-            </div>
-            <div class="space-y-4">
-              <div class="bg-cyan-50 p-4 rounded-lg border border-cyan-200">
-                <h4 class="font-bold text-cyan-800 mb-2">G - Garantia</h4>
-                <p class="text-cyan-700 text-sm">Garantir que o bebê está sugando corretamente</p>
-              </div>
-              <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
-                <h4 class="font-bold text-blue-800 mb-2">A - Acompanhamento</h4>
-                <p class="text-blue-700 text-sm">Acompanhar sinais de sucesso da mamada</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-          <h3 class="text-xl font-semibold text-gray-800 mb-4">📋 Passo a Passo do Método P.E.G.A.</h3>
-          
-          <div class="space-y-8">
-            <div class="border-l-4 border-emerald-500 pl-6">
-              <h4 class="text-lg font-semibold text-emerald-800 mb-3">P - POSICIONAMENTO (2-3 minutos)</h4>
-              <ol class="list-decimal list-inside space-y-2 text-gray-700 ml-4">
-                <li><strong>Posição da mãe:</strong> Costas retas, ombros relaxados, pés apoiados</li>
-                <li><strong>Almofada de apoio:</strong> Use para elevar o bebê até a altura do seio</li>
-                <li><strong>Barriga com barriga:</strong> Corpo do bebê voltado para você</li>
-                <li><strong>Cabeça alinhada:</strong> Orelha, ombro e quadril do bebê em linha reta</li>
-                <li><strong>Nariz livre:</strong> Certifique-se que o bebê pode respirar facilmente</li>
-              </ol>
-            </div>
-
-            <div class="border-l-4 border-teal-500 pl-6">
-              <h4 class="text-lg font-semibold text-teal-800 mb-3">E - ENCAIXE (1-2 minutos)</h4>
-              <ol class="list-decimal list-inside space-y-2 text-gray-700 ml-4">
-                <li><strong>Estimule o reflexo:</strong> Toque o lábio inferior do bebê com o mamilo</li>
-                <li><strong>Boca bem aberta:</strong> Espere a boca abrir como um "bocejo"</li>
-                <li><strong>Movimento rápido:</strong> Aproxime o bebê do seio (não o seio do bebê)</li>
-                <li><strong>Lábios virados:</strong> Lábio inferior virado para fora, superior neutro</li>
-                <li><strong>Aréola na boca:</strong> Mais aréola visível acima que abaixo da boca</li>
-              </ol>
-            </div>
-
-            <div class="border-l-4 border-cyan-500 pl-6">
-              <h4 class="text-lg font-semibold text-cyan-800 mb-3">G - GARANTIA (Durante toda a mamada)</h4>
-              <ol class="list-decimal list-inside space-y-2 text-gray-700 ml-4">
-                <li><strong>Som de deglutição:</strong> Ouça o bebê engolindo (som suave)</li>
-                <li><strong>Movimento da mandíbula:</strong> Movimento amplo e rítmico</li>
-                <li><strong>Bochechas redondas:</strong> Sem covinhas nas bochechas</li>
-                <li><strong>Sem dor:</strong> Amamentação não deve doer após os primeiros segundos</li>
-                <li><strong>Fluxo de leite:</strong> Sensação de "descida" do leite</li>
-              </ol>
-            </div>
-
-            <div class="border-l-4 border-blue-500 pl-6">
-              <h4 class="text-lg font-semibold text-blue-800 mb-3">A - ACOMPANHAMENTO (Pós-mamada)</h4>
-              <ol class="list-decimal list-inside space-y-2 text-gray-700 ml-4">
-                <li><strong>Bebê satisfeito:</strong> Relaxado, sonolento ou alerta e calmo</li>
-                <li><strong>Seio mais macio:</strong> Sensação de esvaziamento</li>
-                <li><strong>Mamilo íntegro:</strong> Formato normal, sem rachaduras</li>
-                <li><strong>Duração adequada:</strong> 15-45 minutos por mamada</li>
-                <li><strong>Frequência normal:</strong> 8-12 mamadas em 24 horas</li>
-              </ol>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-red-50 p-6 rounded-xl border border-red-200">
-          <h3 class="text-xl font-semibold text-red-800 mb-4">🚨 Sinais de Alerta - Procure Ajuda Se:</h3>
-          <ul class="space-y-2 text-red-700">
-            <li class="flex items-start"><span class="text-red-500 mr-2">•</span> Dor intensa que persiste durante toda a mamada</li>
-            <li class="flex items-start"><span class="text-red-500 mr-2">•</span> Mamilos rachados ou sangrando</li>
-            <li class="flex items-start"><span class="text-red-500 mr-2">•</span> Bebê não ganha peso adequadamente</li>
-            <li class="flex items-start"><span class="text-red-500 mr-2">•</span> Menos de 6 fraldas molhadas por dia após o 5º dia</li>
-            <li class="flex items-start"><span class="text-red-500 mr-2">•</span> Bebê muito sonolento ou irritado constantemente</li>
-          </ul>
-        </div>
-
-        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-          <h3 class="text-xl font-semibold text-gray-800 mb-4">💡 Dicas Rápidas P.E.G.A.</h3>
-          <ul class="space-y-2 text-gray-700">
-            <li class="flex items-start"><span class="text-emerald-500 mr-2">•</span> <strong>Pratique antes:</strong> Treine as posições durante a gravidez</li>
-            <li class="flex items-start"><span class="text-emerald-500 mr-2">•</span> <strong>Paciência:</strong> Pode levar algumas tentativas para acertar</li>
-            <li class="flex items-start"><span class="text-emerald-500 mr-2">•</span> <strong>Ambiente calmo:</strong> Local tranquilo facilita o processo</li>
-            <li class="flex items-start"><span class="text-emerald-500 mr-2">•</span> <strong>Hidratação:</strong> Mantenha água sempre por perto</li>
-            <li class="flex items-start"><span class="text-emerald-500 mr-2">•</span> <strong>Confiança:</strong> Seu corpo foi feito para isso!</li>
-          </ul>
-        </div>
+      <h2>🤱 Método P.E.G.A. de Amamentação</h2>
+      <p><strong>Passo a passo para uma amamentação sem dor e com pega correta</strong></p>
+      
+      <h3>🎯 O que é o Método P.E.G.A.?</h3>
+      <p><strong>P</strong>osição - <strong>E</strong>ncaixe - <strong>G</strong>arrada - <strong>A</strong>poio</p>
+      <p>Método desenvolvido para garantir uma amamentação eficaz e confortável para mãe e bebê.</p>
+      
+      <h3>📋 Passo a Passo Detalhado</h3>
+      
+      <h4>P - POSIÇÃO</h4>
+      <ol>
+        <li><strong>Sente-se confortavelmente</strong> com as costas apoiadas</li>
+        <li><strong>Coloque o bebê de frente para você</strong> - barriga com barriga</li>
+        <li><strong>A cabeça do bebê deve estar alinhada</strong> com o corpo</li>
+        <li><strong>Use almofadas</strong> para apoiar seus braços e o bebê</li>
+      </ol>
+      
+      <h4>E - ENCAIXE</h4>
+      <ol>
+        <li><strong>Toque o lábio inferior do bebê</strong> com o mamilo</li>
+        <li><strong>Espere ele abrir bem a boca</strong> (como um bocejo)</li>
+        <li><strong>Aproxime rapidamente</strong> o bebê ao seio</li>
+        <li><strong>O queixo deve tocar o seio primeiro</strong></li>
+      </ol>
+      
+      <h4>G - GARRADA (Pega Correta)</h4>
+      <ul>
+        <li>✅ <strong>Boca bem aberta</strong> abrangendo mamilo e aréola</li>
+        <li>✅ <strong>Lábios virados para fora</strong> (como peixinho)</li>
+        <li>✅ <strong>Queixo encostado no seio</strong></li>
+        <li>✅ <strong>Nariz livre para respirar</strong></li>
+        <li>✅ <strong>Bochechas arredondadas</strong> (não encovadas)</li>
+      </ul>
+      
+      <h4>A - APOIO</h4>
+      <ol>
+        <li><strong>Apoie o seio</strong> com a mão em formato "C"</li>
+        <li><strong>Dedos longe da aréola</strong> para não atrapalhar a pega</li>
+        <li><strong>Sustente o peso do seio</strong> durante toda a mamada</li>
+      </ol>
+      
+      <div style="background: #fef2f2; padding: 1rem; border-radius: 8px; border-left: 4px solid #ef4444; margin: 1rem 0;">
+        <h4>🚨 Sinais de Pega Incorreta</h4>
+        <ul>
+          <li>Dor durante a amamentação</li>
+          <li>Mamilo machucado ou rachado</li>
+          <li>Bebê inquieto ou chorando muito</li>
+          <li>Ruídos de "estalo" durante a sucção</li>
+          <li>Bebê não ganha peso adequadamente</li>
+        </ul>
       </div>
+      
+      <h3>🔧 Soluções para Dificuldades Comuns</h3>
+      
+      <h4>Bebê não consegue pegar o seio:</h4>
+      <ul>
+        <li>Experimente diferentes posições</li>
+        <li>Estimule o reflexo de busca tocando a bochecha</li>
+        <li>Tente quando o bebê estiver calmo, não muito faminto</li>
+      </ul>
+      
+      <h4>Dor durante a amamentação:</h4>
+      <ul>
+        <li>Verifique a pega - retire e recoloque se necessário</li>
+        <li>Use lanolina pura nos mamilos</li>
+        <li>Varie as posições de amamentação</li>
+      </ul>
+      
+      <h3>💡 Dicas Rápidas</h3>
+      <ul>
+        <li>🕐 Amamente em livre demanda</li>
+        <li>💧 Mantenha-se hidratada</li>
+        <li>🛌 Descanse sempre que possível</li>
+        <li>🤱 Pratique pele a pele</li>
+        <li>📞 Procure ajuda se tiver dificuldades</li>
+      </ul>
     `,
     "pos-parto": `
-      <div class="space-y-8">
-        <div class="bg-gradient-to-r from-violet-50 to-purple-50 p-6 rounded-xl border border-violet-200">
-          <h2 class="text-2xl font-bold text-gray-800 mb-4">✨ Recuperação Pós-Parto</h2>
-          <p class="text-gray-700 leading-relaxed">
-            O pós-parto é um período de transformação profunda. Este guia completo vai te ajudar a cuidar 
-            do seu corpo, mente e autoestima durante esta fase única da maternidade.
-          </p>
-        </div>
-
-        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-          <h3 class="text-xl font-semibold text-gray-800 mb-4">🎯 Fases da Recuperação</h3>
-          <div class="space-y-4">
-            <div class="bg-pink-50 p-4 rounded-lg border border-pink-200">
-              <h4 class="font-bold text-pink-800 mb-2">Primeiras 6 semanas - Recuperação Física</h4>
-              <p class="text-pink-700 text-sm">Foco na cicatrização, descanso e adaptação inicial</p>
-            </div>
-            <div class="bg-purple-50 p-4 rounded-lg border border-purple-200">
-              <h4 class="font-bold text-purple-800 mb-2">2-6 meses - Estabilização</h4>
-              <p class="text-purple-700 text-sm">Retomada gradual das atividades e rotina</p>
-            </div>
-            <div class="bg-violet-50 p-4 rounded-lg border border-violet-200">
-              <h4 class="font-bold text-violet-800 mb-2">6+ meses - Nova Identidade</h4>
-              <p class="text-violet-700 text-sm">Construção da nova versão de si mesma</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-          <h3 class="text-xl font-semibold text-gray-800 mb-4">🏥 Cuidados Físicos Essenciais</h3>
-          
-          <div class="space-y-6">
-            <div>
-              <h4 class="font-semibold text-gray-800 mb-3">Primeiras 2 Semanas</h4>
-              <ol class="list-decimal list-inside space-y-1 text-gray-700 ml-4">
-                <li><strong>Repouso absoluto:</strong> Fique na cama o máximo possível</li>
-                <li><strong>Higiene íntima:</strong> Água morna, sem sabonete perfumado</li>
-                <li><strong>Compressas mornas:</strong> Para alívio da dor perineal</li>
-                <li><strong>Absorventes pós-parto:</strong> Troque a cada 2-3 horas</li>
-                <li><strong>Hidratação intensa:</strong> 3-4 litros de água por dia</li>
-              </ol>
-            </div>
-
-            <div>
-              <h4 class="font-semibold text-gray-800 mb-3">Semanas 3-6</h4>
-              <ol class="list-decimal list-inside space-y-1 text-gray-700 ml-4">
-                <li><strong>Caminhadas leves:</strong> 10-15 minutos por dia</li>
-                <li><strong>Exercícios de Kegel:</strong> 3 séries de 10 repetições</li>
-                <li><strong>Alongamentos suaves:</strong> Pescoço, ombros e costas</li>
-                <li><strong>Cinta pós-parto:</strong> Use durante atividades</li>
-                <li><strong>Alimentação nutritiva:</strong> Foco em proteínas e ferro</li>
-              </ol>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-          <h3 class="text-xl font-semibold text-gray-800 mb-4">💆‍♀️ Cuidados com o Corpo</h3>
-          
-          <div class="grid md:grid-cols-2 gap-6">
-            <div class="space-y-4">
-              <div class="bg-rose-50 p-4 rounded-lg border border-rose-200">
-                <h4 class="font-semibold text-rose-800 mb-2">Seios e Amamentação</h4>
-                <ul class="text-rose-700 text-sm space-y-1">
-                  <li>• Sutiã de amamentação confortável</li>
-                  <li>• Conchas protetoras para mamilos</li>
-                  <li>• Óleo de coco para hidratação</li>
-                  <li>• Compressas mornas antes da mamada</li>
-                </ul>
-              </div>
-              
-              <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
-                <h4 class="font-semibold text-blue-800 mb-2">Pele e Estrias</h4>
-                <ul class="text-blue-700 text-sm space-y-1">
-                  <li>• Hidratante 2x ao dia</li>
-                  <li>• Óleo de rosa mosqueta nas estrias</li>
-                  <li>• Protetor solar sempre</li>
-                  <li>• Esfoliação suave 1x por semana</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="space-y-4">
-              <div class="bg-green-50 p-4 rounded-lg border border-green-200">
-                <h4 class="font-semibold text-green-800 mb-2">Cabelos</h4>
-                <ul class="text-green-700 text-sm space-y-1">
-                  <li>• Shampoo suave sem sulfato</li>
-                  <li>• Máscara nutritiva 1x por semana</li>
-                  <li>• Evite química nos primeiros 6 meses</li>
-                  <li>• Corte prático para facilitar o dia a dia</li>
-                </ul>
-              </div>
-              
-              <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
-                <h4 class="font-semibold text-yellow-800 mb-2">Região Íntima</h4>
-                <ul class="text-yellow-700 text-sm space-y-1">
-                  <li>• Sabonete íntimo pH neutro</li>
-                  <li>• Calcinha de algodão</li>
-                  <li>• Evite duchas vaginais</li>
-                  <li>• Consulte sobre lubrificantes</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-          <h3 class="text-xl font-semibold text-gray-800 mb-4">🧠 Saúde Mental e Emocional</h3>
-          
-          <div class="space-y-6">
-            <div>
-              <h4 class="font-semibold text-gray-800 mb-3">Estratégias de Autocuidado</h4>
-              <ol class="list-decimal list-inside space-y-2 text-gray-700 ml-4">
-                <li><strong>Aceite ajuda:</strong> Permita que outros cuidem de você</li>
-                <li><strong>Durma quando o bebê dormir:</strong> Priorize o descanso</li>
-                <li><strong>Converse sobre seus sentimentos:</strong> Com parceiro, família ou amigos</li>
-                <li><strong>Mantenha expectativas realistas:</strong> Cada dia é uma vitória</li>
-                <li><strong>Pratique gratidão:</strong> Anote 3 coisas boas do dia</li>
-              </ol>
-            </div>
-
-            <div class="bg-amber-50 p-4 rounded-lg border border-amber-200">
-              <h4 class="font-semibold text-amber-800 mb-3">⚠️ Sinais de Alerta - Baby Blues vs Depressão</h4>
-              <div class="grid md:grid-cols-2 gap-4">
-                <div>
-                  <h5 class="font-medium text-amber-800 mb-2">Baby Blues (Normal)</h5>
-                  <ul class="text-amber-700 text-sm space-y-1">
-                    <li>• Choro fácil</li>
-                    <li>• Irritabilidade leve</li>
-                    <li>• Ansiedade ocasional</li>
-                    <li>• Melhora em 2 semanas</li>
-                  </ul>
-                </div>
-                <div>
-                  <h5 class="font-medium text-red-800 mb-2">Depressão (Procure Ajuda)</h5>
-                  <ul class="text-red-700 text-sm space-y-1">
-                    <li>• Tristeza profunda persistente</li>
-                    <li>• Perda de interesse em tudo</li>
-                    <li>• Pensamentos de autolesão</li>
-                    <li>• Sintomas por mais de 2 semanas</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-          <h3 class="text-xl font-semibold text-gray-800 mb-4">💕 Retomada da Intimidade</h3>
-          
-          <div class="space-y-4">
-            <div class="bg-pink-50 p-4 rounded-lg border border-pink-200">
-              <h4 class="font-semibold text-pink-800 mb-2">Quando Retomar?</h4>
-              <ul class="text-pink-700 text-sm space-y-1">
-                <li>• Após liberação médica (geralmente 6-8 semanas)</li>
-                <li>• Quando você se sentir pronta emocionalmente</li>
-                <li>• Sem pressão ou pressa</li>
-                <li>• Comunicação aberta com o parceiro</li>
-              </ul>
-            </div>
-            
-            <div class="bg-purple-50 p-4 rounded-lg border border-purple-200">
-              <h4 class="font-semibold text-purple-800 mb-2">Dicas para o Recomeço</h4>
-              <ul class="text-purple-700 text-sm space-y-1">
-                <li>• Use lubrificante à base de água</li>
-                <li>• Comece devagar e com carinho</li>
-                <li>• Explore outras formas de intimidade</li>
-                <li>• Converse sobre contraceptivos</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-          <h3 class="text-xl font-semibold text-gray-800 mb-4">💡 Dicas Rápidas de Recuperação</h3>
-          <ul class="space-y-2 text-gray-700">
-            <li class="flex items-start"><span class="text-violet-500 mr-2">•</span> <strong>Rotina flexível:</strong> Adapte-se ao ritmo do bebê</li>
-            <li class="flex items-start"><span class="text-violet-500 mr-2">•</span> <strong>Rede de apoio:</strong> Mantenha contato com outras mães</li>
-            <li class="flex items-start"><span class="text-violet-500 mr-2">•</span> <strong>Tempo para si:</strong> Mesmo que sejam 10 minutos por dia</li>
-            <li class="flex items-start"><span class="text-violet-500 mr-2">•</span> <strong>Documentar momentos:</strong> Fotos e diário da maternidade</li>
-            <li class="flex items-start"><span class="text-violet-500 mr-2">•</span> <strong>Celebrar conquistas:</strong> Cada pequeno progresso importa</li>
-          </ul>
-        </div>
+      <h2>✨ Recuperação Pós-Parto</h2>
+      <p><strong>Guia completo para recuperar autoestima, bem-estar físico e mental</strong></p>
+      
+      <h3>🎯 Objetivo</h3>
+      <p>Apoiar a nova mãe em sua jornada de recuperação integral, cuidando do corpo, mente e autoestima no pós-parto.</p>
+      
+      <h3>⏰ Cronologia da Recuperação</h3>
+      
+      <h4>Primeiras 6 Semanas (Puerpério Imediato)</h4>
+      <ul>
+        <li><strong>Foco:</strong> Descanso e cicatrização</li>
+        <li><strong>Prioridades:</strong> Alimentação, hidratação, sono</li>
+        <li><strong>Atividades:</strong> Caminhadas leves, exercícios respiratórios</li>
+      </ul>
+      
+      <h4>6 Semanas a 6 Meses</h4>
+      <ul>
+        <li><strong>Liberação médica</strong> para atividades normais</li>
+        <li><strong>Retorno gradual</strong> aos exercícios</li>
+        <li><strong>Foco na autoestima</strong> e bem-estar mental</li>
+      </ul>
+      
+      <h3>💪 Recuperação Física</h3>
+      
+      <h4>Exercícios para o Assoalho Pélvico</h4>
+      <ol>
+        <li><strong>Kegel básico:</strong> Contraia por 5 segundos, relaxe por 5</li>
+        <li><strong>Respiração diafragmática:</strong> Inspire expandindo a barriga</li>
+        <li><strong>Ponte:</strong> Deite, dobre os joelhos, eleve o quadril</li>
+        <li><strong>Agachamento na parede:</strong> Costas apoiadas, desça devagar</li>
+      </ol>
+      
+      <h4>Cuidados com a Cicatrização</h4>
+      <ul>
+        <li><strong>Cesariana:</strong> Evite carregar peso, mantenha a incisão limpa</li>
+        <li><strong>Parto normal:</strong> Banhos de assento com água morna</li>
+        <li><strong>Episiotomia:</strong> Compressas frias nas primeiras 24h</li>
+      </ul>
+      
+      <h3>🧠 Bem-estar Mental</h3>
+      
+      <h4>Lidando com as Mudanças Emocionais</h4>
+      <ul>
+        <li><strong>Baby blues (até 15 dias):</strong> Normal, passa naturalmente</li>
+        <li><strong>Depressão pós-parto:</strong> Procure ajuda profissional</li>
+        <li><strong>Ansiedade:</strong> Técnicas de respiração e mindfulness</li>
+      </ul>
+      
+      <h4>Estratégias de Autocuidado</h4>
+      <ol>
+        <li><strong>Reserve tempo para si:</strong> Mesmo que sejam 10 minutos</li>
+        <li><strong>Aceite ajuda:</strong> Delegue tarefas domésticas</li>
+        <li><strong>Conecte-se:</strong> Converse com outras mães</li>
+        <li><strong>Pratique gratidão:</strong> Anote 3 coisas boas do dia</li>
+      </ol>
+      
+      <h3>💄 Recuperando a Autoestima</h3>
+      
+      <h4>Cuidados com o Corpo</h4>
+      <ul>
+        <li><strong>Hidratação da pele:</strong> Óleos naturais nas estrias</li>
+        <li><strong>Alimentação nutritiva:</strong> Foque em nutrientes, não restrição</li>
+        <li><strong>Roupas confortáveis:</strong> Que valorizem seu corpo atual</li>
+        <li><strong>Exercícios graduais:</strong> Comece devagar, seja consistente</li>
+      </ul>
+      
+      <h4>Reconectando com sua Feminilidade</h4>
+      <ul>
+        <li><strong>Ritual de beleza:</strong> Banho relaxante, hidratante, perfume</li>
+        <li><strong>Roupas que te fazem sentir bem:</strong> Invista em peças confortáveis e bonitas</li>
+        <li><strong>Tempo para hobbies:</strong> Retome atividades que te dão prazer</li>
+      </ul>
+      
+      <h3>❤️ Vida Íntima e Libido</h3>
+      
+      <h4>Retorno da Intimidade</h4>
+      <ul>
+        <li><strong>Aguarde liberação médica</strong> (geralmente 6 semanas)</li>
+        <li><strong>Comunique-se com o parceiro</strong> sobre medos e expectativas</li>
+        <li><strong>Use lubrificante</strong> se necessário</li>
+        <li><strong>Vá no seu ritmo</strong> - não há pressa</li>
+      </ul>
+      
+      <h4>Recuperando a Libido</h4>
+      <ul>
+        <li><strong>Seja paciente:</strong> Hormônios levam tempo para se equilibrar</li>
+        <li><strong>Foque na conexão:</strong> Intimidade vai além do físico</li>
+        <li><strong>Cuide do sono:</strong> Descanso é fundamental para o desejo</li>
+        <li><strong>Exercite-se:</strong> Melhora autoestima e circulação</li>
+      </ul>
+      
+      <div style="background: #fef2f2; padding: 1rem; border-radius: 8px; border-left: 4px solid #ef4444; margin: 1rem 0;">
+        <h4>🚨 Quando Procurar Ajuda</h4>
+        <ul>
+          <li>Tristeza profunda por mais de 2 semanas</li>
+          <li>Pensamentos de machucar a si mesma ou o bebê</li>
+          <li>Dificuldade extrema para cuidar do bebê</li>
+          <li>Isolamento social completo</li>
+          <li>Ataques de pânico frequentes</li>
+        </ul>
       </div>
+      
+      <h3>💡 Dicas Rápidas</h3>
+      <ul>
+        <li>🌅 Exponha-se ao sol matinal (vitamina D)</li>
+        <li>💧 Beba muita água (especialmente se amamentando)</li>
+        <li>🥗 Priorize alimentos nutritivos e coloridos</li>
+        <li>😴 Durma quando o bebê dormir</li>
+        <li>🤗 Peça e aceite ajuda sem culpa</li>
+        <li>📱 Limite redes sociais se causarem comparações</li>
+      </ul>
     `,
     sono: `
-      <div class="space-y-8">
-        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-xl border border-blue-200">
-          <h2 class="text-2xl font-bold text-gray-800 mb-4">🌙 Sono Tranquilo do Bebê</h2>
-          <p class="text-gray-700 leading-relaxed">
-            Descubra técnicas comprovadas para estabelecer uma rotina de sono saudável para seu bebê, 
-            garantindo noites mais tranquilas para toda a família.
-          </p>
-        </div>
-
-        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-          <h3 class="text-xl font-semibold text-gray-800 mb-4">⏰ Padrões de Sono por Idade</h3>
-          <div class="space-y-4">
-            <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
-              <h4 class="font-bold text-blue-800 mb-2">0-3 meses - Recém-nascido</h4>
-              <ul class="text-blue-700 text-sm space-y-1">
-                <li>• 14-17 horas por dia</li>
-                <li>• Ciclos de 2-4 horas</li>
-                <li>• Sem distinção dia/noite</li>
-                <li>• Sono fragmentado é normal</li>
-              </ul>
-            </div>
-            <div class="bg-indigo-50 p-4 rounded-lg border border-indigo-200">
-              <h4 class="font-bold text-indigo-800 mb-2">3-6 meses - Desenvolvimento</h4>
-              <ul class="text-indigo-700 text-sm space-y-1">
-                <li>• 12-15 horas por dia</li>
-                <li>• Períodos mais longos à noite</li>
-                <li>• 3-4 sonecas durante o dia</li>
-                <li>• Início da rotina</li>
-              </ul>
-            </div>
-            <div class="bg-purple-50 p-4 rounded-lg border border-purple-200">
-              <h4 class="font-bold text-purple-800 mb-2">6+ meses - Consolidação</h4>
-              <ul class="text-purple-700 text-sm space-y-1">
-                <li>• 11-14 horas por dia</li>
-                <li>• 6-8 horas seguidas à noite</li>
-                <li>• 2-3 sonecas diurnas</li>
-                <li>• Rotina bem estabelecida</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-          <h3 class="text-xl font-semibold text-gray-800 mb-4">🏠 Ambiente Ideal para o Sono</h3>
-          
-          <div class="grid md:grid-cols-2 gap-6">
-            <div class="space-y-4">
-              <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                <h4 class="font-semibold text-gray-800 mb-2">Temperatura e Ventilação</h4>
-                <ul class="text-gray-700 text-sm space-y-1">
-                  <li>• 18-22°C (temperatura ideal)</li>
-                  <li>• Ventilação adequada</li>
-                  <li>• Evite correntes de ar diretas</li>
-                  <li>• Use termômetro de ambiente</li>
-                </ul>
-              </div>
-              
-              <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
-                <h4 class="font-semibold text-yellow-800 mb-2">Iluminação</h4>
-                <ul class="text-yellow-700 text-sm space-y-1">
-                  <li>• Escuro total à noite</li>
-                  <li>• Luz suave para mamadas noturnas</li>
-                  <li>• Blackout nas janelas</li>
-                  <li>• Evite telas 1h antes de dormir</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="space-y-4">
-              <div class="bg-green-50 p-4 rounded-lg border border-green-200">
-                <h4 class="font-semibold text-green-800 mb-2">Ruído</h4>
-                <ul class="text-green-700 text-sm space-y-1">
-                  <li>• Ruído branco constante</li>
-                  <li>• Volume baixo (50-60 decibéis)</li>
-                  <li>• Sons da natureza ou ventilador</li>
-                  <li>• Evite ruídos súbitos</li>
-                </ul>
-              </div>
-              
-              <div class="bg-pink-50 p-4 rounded-lg border border-pink-200">
-                <h4 class="font-semibold text-pink-800 mb-2">Segurança</h4>
-                <ul class="text-pink-700 text-sm space-y-1">
-                  <li>• Berço vazio (sem travesseiros/cobertores)</li>
-                  <li>• Colchão firme</li>
-                  <li>• Bebê sempre de barriga para cima</li>
-                  <li>• Distância segura de fios e objetos</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-          <h3 class="text-xl font-semibold text-gray-800 mb-4">📋 Rotina de Sono Passo a Passo</h3>
-          
-          <div class="space-y-6">
-            <div class="border-l-4 border-blue-500 pl-6">
-              <h4 class="text-lg font-semibold text-blue-800 mb-3">Rotina Noturna (30-45 minutos)</h4>
-              <ol class="list-decimal list-inside space-y-2 text-gray-700 ml-4">
-                <li><strong>Banho morno (5-10 min):</strong> Água morna, ambiente calmo</li>
-                <li><strong>Massagem relaxante (5-10 min):</strong> Óleo morno, movimentos suaves</li>
-                <li><strong>Roupa confortável:</strong> Pijama adequado para temperatura</li>
-                <li><strong>Última mamada:</strong> Ambiente com pouca luz</li>
-                <li><strong>Música suave ou história:</strong> 5-10 minutos</li>
-                <li><strong>Colocar no berço acordado:</strong> Para aprender a adormecer sozinho</li>
-              </ol>
-            </div>
-
-            <div class="border-l-4 border-indigo-500 pl-6">
-              <h4 class="text-lg font-semibold text-indigo-800 mb-3">Sonecas Diurnas</h4>
-              <ol class="list-decimal list-inside space-y-2 text-gray-700 ml-4">
-                <li><strong>Observe sinais de sono:</strong> Bocejos, esfregar os olhos, irritabilidade</li>
-                <li><strong>Ambiente semi-escuro:</strong> Cortinas fechadas, mas não totalmente escuro</li>
-                <li><strong>Rotina encurtada:</strong> 10-15 minutos de preparação</li>
-                <li><strong>Horários consistentes:</strong> Mesmos horários todos os dias</li>
-                <li><strong>Duração adequada:</strong> 30min-2h dependendo da idade</li>
-              </ol>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-          <h3 class="text-xl font-semibold text-gray-800 mb-4">🛠️ Técnicas de Acalmar</h3>
-          
-          <div class="grid md:grid-cols-2 gap-6">
-            <div class="space-y-4">
-              <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
-                <h4 class="font-semibold text-blue-800 mb-2">Método dos 5 S's</h4>
-                <ul class="text-blue-700 text-sm space-y-1">
-                  <li>• <strong>Swaddle:</strong> Enrolar o bebê</li>
-                  <li>• <strong>Side:</strong> Posição de lado (só para acalmar)</li>
-                  <li>• <strong>Shush:</strong> Som "shhhh" constante</li>
-                  <li>• <strong>Swing:</strong> Movimento suave</li>
-                  <li>• <strong>Suck:</strong> Sucção (dedo, chupeta)</li>
-                </ul>
-              </div>
-              
-              <div class="bg-green-50 p-4 rounded-lg border border-green-200">
-                <h4 class="font-semibold text-green-800 mb-2">Técnica do Embrulho</h4>
-                <ul class="text-green-700 text-sm space-y-1">
-                  <li>• Use manta de algodão</li>
-                  <li>• Braços junto ao corpo</li>
-                  <li>• Pernas livres para movimento</li>
-                  <li>• Não muito apertado</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="space-y-4">
-              <div class="bg-purple-50 p-4 rounded-lg border border-purple-200">
-                <h4 class="font-semibold text-purple-800 mb-2">Método Pick-up/Put-down</h4>
-                <ul class="text-purple-700 text-sm space-y-1">
-                  <li>• Coloque o bebê no berço acordado</li>
-                  <li>• Se chorar, pegue no colo até acalmar</li>
-                  <li>• Coloque de volta ainda acordado</li>
-                  <li>• Repita quantas vezes necessário</li>
-                </ul>
-              </div>
-              
-              <div class="bg-orange-50 p-4 rounded-lg border border-orange-200">
-                <h4 class="font-semibold text-orange-800 mb-2">Técnica da Cadeira</h4>
-                <ul class="text-orange-700 text-sm space-y-1">
-                  <li>• Sente ao lado do berço</li>
-                  <li>• A cada 3 dias, afaste a cadeira</li>
-                  <li>• Até sair completamente do quarto</li>
-                  <li>• Processo gradual e gentil</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-amber-50 p-6 rounded-xl border border-amber-200">
-          <h3 class="text-xl font-semibold text-amber-800 mb-4">⚠️ Problemas Comuns e Soluções</h3>
-          <div class="space-y-4">
-            <div class="grid md:grid-cols-2 gap-4">
-              <div>
-                <h4 class="font-semibold text-amber-800 mb-2">Regressão do Sono</h4>
-                <ul class="text-amber-700 text-sm space-y-1">
-                  <li>• Normal aos 4, 8-10, 12, 18 meses</li>
-                  <li>• Mantenha a rotina consistente</li>
-                  <li>• Seja paciente, é temporário</li>
-                  <li>• Pode durar 2-6 semanas</li>
-                </ul>
-              </div>
-              <div>
-                <h4 class="font-semibold text-amber-800 mb-2">Despertar Precoce</h4>
-                <ul class="text-amber-700 text-sm space-y-1">
-                  <li>• Verifique se o quarto está escuro</li>
-                  <li>• Ajuste horário da última soneca</li>
-                  <li>• Mantenha rotina mesmo se acordar cedo</li>
-                  <li>• Pode ser fome ou fralda suja</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-          <h3 class="text-xl font-semibold text-gray-800 mb-4">💡 Dicas Rápidas para Sono Tranquilo</h3>
-          <ul class="space-y-2 text-gray-700">
-            <li class="flex items-start"><span class="text-blue-500 mr-2">•</span> <strong>Consistência é chave:</strong> Mesma rotina todos os dias</li>
-            <li class="flex items-start"><span class="text-blue-500 mr-2">•</span> <strong>Sinais de sono:</strong> Aprenda a reconhecer quando está com sono</li>
-            <li class="flex items-start"><span class="text-blue-500 mr-2">•</span> <strong>Paciência:</strong> Mudanças levam 1-2 semanas para se estabelecer</li>
-            <li class="flex items-start"><span class="text-blue-500 mr-2">•</span> <strong>Flexibilidade:</strong> Adapte conforme o crescimento do bebê</li>
-            <li class="flex items-start"><span class="text-blue-500 mr-2">•</span> <strong>Autocuidado:</strong> Descanse quando o bebê descansar</li>
-          </ul>
-        </div>
+      <h2>🌙 Sono Tranquilo do Bebê</h2>
+      <p><strong>Técnicas e rotinas para estabelecer um sono saudável e noites tranquilas</strong></p>
+      
+      <h3>🎯 Objetivo</h3>
+      <p>Estabelecer rotinas de sono saudáveis que promovam descanso adequado para o bebê e toda a família.</p>
+      
+      <h3>⏰ Entendendo o Sono do Bebê por Idade</h3>
+      
+      <h4>0-3 Meses (Recém-nascido)</h4>
+      <ul>
+        <li><strong>Sono total:</strong> 14-17 horas por dia</li>
+        <li><strong>Padrão:</strong> Ciclos de 2-4 horas</li>
+        <li><strong>Características:</strong> Sono irregular, mais sono REM</li>
+      </ul>
+      
+      <h4>3-6 Meses</h4>
+      <ul>
+        <li><strong>Sono total:</strong> 12-15 horas por dia</li>
+        <li><strong>Padrão:</strong> Começam a dormir períodos mais longos à noite</li>
+        <li><strong>Desenvolvimento:</strong> Ritmo circadiano se estabelecendo</li>
+      </ul>
+      
+      <h4>6-12 Meses</h4>
+      <ul>
+        <li><strong>Sono total:</strong> 12-14 horas por dia</li>
+        <li><strong>Padrão:</strong> 2-3 sonecas durante o dia</li>
+        <li><strong>Capacidade:</strong> Podem dormir a noite toda</li>
+      </ul>
+      
+      <h3>🏠 Criando o Ambiente Ideal</h3>
+      
+      <h4>Quarto do Bebê</h4>
+      <ul>
+        <li><strong>Temperatura:</strong> 18-20°C (ideal)</li>
+        <li><strong>Iluminação:</strong> Escuro à noite, luz natural durante o dia</li>
+        <li><strong>Ruído:</strong> Ambiente silencioso ou ruído branco suave</li>
+        <li><strong>Segurança:</strong> Berço vazio, colchão firme</li>
+      </ul>
+      
+      <h4>Elementos que Ajudam</h4>
+      <ul>
+        <li><strong>Blackout:</strong> Cortinas que bloqueiam luz externa</li>
+        <li><strong>Ruído branco:</strong> Som constante e suave</li>
+        <li><strong>Umidificador:</strong> Se o ar estiver muito seco</li>
+        <li><strong>Termômetro:</strong> Para monitorar temperatura</li>
+      </ul>
+      
+      <h3>📋 Estabelecendo Rotinas</h3>
+      
+      <h4>Rotina Noturna (30-45 minutos antes de dormir)</h4>
+      <ol>
+        <li><strong>Banho morno:</strong> Relaxante e sinalizador de sono</li>
+        <li><strong>Massagem suave:</strong> Com óleo morno, movimentos lentos</li>
+        <li><strong>Roupas confortáveis:</strong> Pijama adequado à temperatura</li>
+        <li><strong>Alimentação:</strong> Última mamada/mamadeira</li>
+        <li><strong>Atividade calma:</strong> Música suave, leitura, conversa baixa</li>
+        <li><strong>Colocar no berço:</strong> Ainda acordado, mas sonolento</li>
+      </ol>
+      
+      <h4>Rotina Diurna</h4>
+      <ul>
+        <li><strong>Manhã:</strong> Exposição à luz natural</li>
+        <li><strong>Sonecas:</strong> Em horários regulares</li>
+        <li><strong>Atividades:</strong> Estimulação adequada à idade</li>
+        <li><strong>Alimentação:</strong> Intervalos regulares</li>
+      </ul>
+      
+      <h3>🛠️ Técnicas de Sono</h3>
+      
+      <h4>Método da Cadeira (Gradual)</h4>
+      <ol>
+        <li><strong>Semana 1:</strong> Cadeira ao lado do berço</li>
+        <li><strong>Semana 2:</strong> Cadeira no meio do quarto</li>
+        <li><strong>Semana 3:</strong> Cadeira na porta</li>
+        <li><strong>Semana 4:</strong> Fora do quarto</li>
+      </ol>
+      
+      <h4>Método Pick-up/Put-down</h4>
+      <ol>
+        <li><strong>Coloque o bebê no berço</strong> acordado</li>
+        <li><strong>Se chorar:</strong> Pegue no colo até acalmar</li>
+        <li><strong>Coloque de volta</strong> ainda acordado</li>
+        <li><strong>Repita</strong> quantas vezes necessário</li>
+      </ol>
+      
+      <h4>Técnica do Shush-Pat</h4>
+      <ul>
+        <li><strong>Shush:</strong> Som "shhh" constante e ritmado</li>
+        <li><strong>Pat:</strong> Tapinhas suaves nas costas ou bumbum</li>
+        <li><strong>Posição:</strong> Bebê de lado ou de bruços no seu colo</li>
+        <li><strong>Transição:</strong> Para o berço quando relaxado</li>
+      </ul>
+      
+      <h3>😴 Sinais de Sono</h3>
+      
+      <h4>Sinais Precoces (Hora de Iniciar Rotina)</h4>
+      <ul>
+        <li>Olhar fixo ou "vidrado"</li>
+        <li>Movimentos mais lentos</li>
+        <li>Menos interação social</li>
+        <li>Bocejos ocasionais</li>
+      </ul>
+      
+      <h4>Sinais Tardios (Bebê Muito Cansado)</h4>
+      <ul>
+        <li>Choro intenso</li>
+        <li>Arquear as costas</li>
+        <li>Esfregar os olhos</li>
+        <li>Agitação extrema</li>
+      </ul>
+      
+      <h3>🔧 Solucionando Problemas Comuns</h3>
+      
+      <h4>Bebê Acorda Muito à Noite</h4>
+      <ul>
+        <li>Verifique se está com fome, frio ou calor</li>
+        <li>Avalie se a rotina diurna está adequada</li>
+        <li>Considere salto de desenvolvimento</li>
+        <li>Mantenha consistência na resposta</li>
+      </ul>
+      
+      <h4>Dificuldade para Adormecer</h4>
+      <ul>
+        <li>Antecipe a rotina se bebê está muito cansado</li>
+        <li>Verifique ambiente (temperatura, ruído, luz)</li>
+        <li>Avalie se há estimulação excessiva durante o dia</li>
+        <li>Seja paciente - pode levar tempo</li>
+      </ul>
+      
+      <h4>Regressões do Sono</h4>
+      <ul>
+        <li><strong>4 meses:</strong> Mudança nos ciclos de sono</li>
+        <li><strong>8-10 meses:</strong> Ansiedade de separação</li>
+        <li><strong>12 meses:</strong> Transição para 1 soneca</li>
+        <li><strong>18 meses:</strong> Desenvolvimento cognitivo</li>
+      </ul>
+      
+      <div style="background: #fef2f2; padding: 1rem; border-radius: 8px; border-left: 4px solid #ef4444; margin: 1rem 0;">
+        <h4>⚠️ Segurança do Sono</h4>
+        <ul>
+          <li>Sempre coloque o bebê de barriga para cima</li>
+          <li>Berço vazio - sem travesseiros, cobertores soltos, brinquedos</li>
+          <li>Colchão firme e bem ajustado</li>
+          <li>Evite superaquecimento</li>
+          <li>Não fume no ambiente</li>
+        </ul>
       </div>
+      
+      <h3>💡 Dicas Rápidas</h3>
+      <ul>
+        <li>🕐 Consistência é fundamental - mantenha rotinas</li>
+        <li>☀️ Luz natural durante o dia, escuridão à noite</li>
+        <li>🤱 Amamente/alimente antes da rotina de sono</li>
+        <li>📱 Evite telas 1 hora antes de dormir</li>
+        <li>😌 Mantenha-se calma - bebês sentem nossa energia</li>
+        <li>⏰ Seja paciente - mudanças levam 1-2 semanas</li>
+      </ul>
     `,
   }
 
-  return content[moduleId] || "<p>Conteúdo não encontrado.</p>"
+  return content[moduleId as keyof typeof content] || "<p>Conteúdo em desenvolvimento...</p>"
 }
 
 const MembersDashboard: React.FC = () => {
@@ -698,6 +496,7 @@ const MembersDashboard: React.FC = () => {
       </header>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Navigation Tabs */}
         <div className="flex flex-wrap gap-2 mb-8 bg-white rounded-xl p-2 shadow-sm border border-gray-100">
           <button
             onClick={() => setActiveTab("welcome")}
@@ -741,6 +540,7 @@ const MembersDashboard: React.FC = () => {
           </button>
         </div>
 
+        {/* Welcome Tab */}
         {activeTab === "welcome" && (
           <div className="space-y-8">
             <div className="text-center space-y-6">
@@ -828,6 +628,7 @@ const MembersDashboard: React.FC = () => {
           </div>
         )}
 
+        {/* Modules Tab */}
         {activeTab === "modules" && (
           <div className="grid lg:grid-cols-4 gap-8">
             <div className="lg:col-span-1">
@@ -875,6 +676,7 @@ const MembersDashboard: React.FC = () => {
           </div>
         )}
 
+        {/* Extras Premium Tab */}
         {activeTab === "extras" && (
           <div className="space-y-8">
             <div className="text-center mb-8">
@@ -942,80 +744,13 @@ const MembersDashboard: React.FC = () => {
                 <p className="text-gray-600 mb-4 text-sm">
                   Receitas de chás naturais seguros para gestantes e mães que amamentam.
                 </p>
-                <button className="inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-lg text-sm font-medium hover:bg-green-700 transition-colors">
-                  Ver Receitas
-                </button>
-              </div>
-            </div>
-
-            {/* Receitas de Chás Detalhadas */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8">
-              <h3 className="text-2xl font-semibold text-gray-800 mb-6">🍃 Receitas de Chás Seguros</h3>
-
-              <div className="grid md:grid-cols-2 gap-8">
-                <div className="space-y-6">
-                  <div className="bg-green-50 p-6 rounded-xl border border-green-200">
-                    <h4 className="font-semibold text-green-800 mb-3">Chá de Camomila - Relaxamento</h4>
-                    <p className="text-green-700 text-sm mb-3">Ideal para ansiedade e insônia durante a gestação</p>
-                    <ul className="text-green-700 text-sm space-y-1">
-                      <li>• 1 colher de sopa de flores secas de camomila</li>
-                      <li>• 200ml de água fervente</li>
-                      <li>• Deixe em infusão por 5-7 minutos</li>
-                      <li>• Tome 1-2 xícaras por dia, preferencialmente à noite</li>
-                    </ul>
-                  </div>
-
-                  <div className="bg-orange-50 p-6 rounded-xl border border-orange-200">
-                    <h4 className="font-semibold text-orange-800 mb-3">Chá de Gengibre - Enjoos</h4>
-                    <p className="text-orange-700 text-sm mb-3">Alivia náuseas e enjoos matinais</p>
-                    <ul className="text-orange-700 text-sm space-y-1">
-                      <li>• 1 fatia fina de gengibre fresco</li>
-                      <li>• 200ml de água quente (não fervente)</li>
-                      <li>• Infusão por 3-5 minutos</li>
-                      <li>• Máximo 2 xícaras por dia</li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="space-y-6">
-                  <div className="bg-purple-50 p-6 rounded-xl border border-purple-200">
-                    <h4 className="font-semibold text-purple-800 mb-3">Chá de Folha de Framboesa</h4>
-                    <p className="text-purple-700 text-sm mb-3">Fortalece o útero (apenas após 32 semanas)</p>
-                    <ul className="text-purple-700 text-sm space-y-1">
-                      <li>• 1 colher de chá de folhas secas</li>
-                      <li>• 250ml de água fervente</li>
-                      <li>• Infusão por 10 minutos</li>
-                      <li>• Comece com 1 xícara/dia, aumente gradualmente</li>
-                    </ul>
-                  </div>
-
-                  <div className="bg-blue-50 p-6 rounded-xl border border-blue-200">
-                    <h4 className="font-semibold text-blue-800 mb-3">Chá de Melissa - Digestão</h4>
-                    <p className="text-blue-700 text-sm mb-3">Melhora digestão e reduz gases</p>
-                    <ul className="text-blue-700 text-sm space-y-1">
-                      <li>• 1 colher de sopa de folhas secas</li>
-                      <li>• 200ml de água fervente</li>
-                      <li>• Infusão por 8 minutos</li>
-                      <li>• 1-2 xícaras após as refeições</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-red-50 p-6 rounded-xl border border-red-200 mt-6">
-                <h4 className="font-semibold text-red-800 mb-3">⚠️ Chás a Evitar Durante a Gestação</h4>
-                <div className="grid md:grid-cols-2 gap-4">
-                  <ul className="text-red-700 text-sm space-y-1">
-                    <li>• Boldo (pode causar contrações)</li>
-                    <li>• Cavalinha (diurético forte)</li>
-                    <li>• Sene (laxante potente)</li>
-                    <li>• Artemísia (abortiva)</li>
-                  </ul>
-                  <ul className="text-red-700 text-sm space-y-1">
-                    <li>• Confrei (hepatotóxico)</li>
-                    <li>• Poejo (neurotóxico)</li>
-                    <li>• Arruda (abortiva)</li>
-                    <li>• Buchinha-do-norte (abortiva)</li>
+                <div className="text-sm text-gray-700">
+                  <p className="font-medium mb-2">Receitas incluídas:</p>
+                  <ul className="space-y-1">
+                    <li>• Camomila para relaxamento</li>
+                    <li>• Gengibre para enjoos</li>
+                    <li>• Melissa para digestão</li>
+                    <li>• Folha de framboesa</li>
                   </ul>
                 </div>
               </div>
@@ -1023,6 +758,7 @@ const MembersDashboard: React.FC = () => {
           </div>
         )}
 
+        {/* Support Tab */}
         {activeTab === "support" && (
           <div className="space-y-8">
             <div className="text-center mb-8">
